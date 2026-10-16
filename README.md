@@ -1,56 +1,96 @@
+
 # Lab 5: Static Code Analysis — Student Attendance Tracker
 
-**Your file:** `attendance_tracker.py`
-**Python:** 3.10 or newer
+## Student Repository
 
-Follow the lab handout for the full instructions.
+**Forked Repository URL:**  
+https://github.com/HemanthCS2026/L5_61_attendance-tracker
 
-## About the program
+## Overview
 
-A college attendance tracker. It marks daily attendance per student, works out attendance percentages, applies the 75% exam-eligibility rule, lists students with a shortage, exports a CSV, schedules reminders and can sync to an ERP system and back up reports.
+This project demonstrates static code analysis and security improvements to a Python-based student attendance tracker. Pylint, Bandit, and Flake8 were used to identify code-quality and security issues and verify the fixes.
 
-The code works, but only just. It has quality, style and security problems of the kind Pylint, Flake8 and Bandit are built to find.
+## Project Files
 
-## What to do
+| File | Description |
+|---|---|
+| `attendance_tracker.py` | Updated attendance tracker with code-quality and security fixes |
+| `issues.md` | Document listing identified issues, their severity, descriptions, and fixes |
+| `reflection.md` | Reflection on the static code analysis lab |
+| `pylint_before.txt` | Pylint report before fixes |
+| `pylint_after.txt` | Pylint report after fixes |
+| `bandit_before.txt` | Bandit report before fixes |
+| `bandit_after.txt` | Bandit report after fixes |
+| `flake8_before.txt` | Flake8 report before fixes |
+| `flake8_after.txt` | Flake8 report after fixes |
 
-1. **Install the tools:**
-   ```bash
-   python -m pip install pylint bandit flake8 requests
-   ```
-   `requests` is installed as well because the program imports it; without it the program stops with `ModuleNotFoundError`.
+## Tools Used
 
-2. **Run it first** and read the output carefully:
-   ```bash
-   python attendance_tracker.py
-   ```
-   It runs a short built-in demo and prints the results; it does not ask for input. Read every line and ask whether a sensible program would print that. Not every problem in this file is something a tool will flag, so pay attention to output that looks wrong.
+- **Pylint:** Python code-quality and style analysis
+- **Bandit:** Python security issue detection
+- **Flake8:** Python style and linting checks
 
+## Run the Project
 
+Install the required dependencies:
 
-3. **Run the analysis** and save the reports:
-   ```bash
-   python -m pylint attendance_tracker.py > pylint_report.txt
-   python -m bandit -r attendance_tracker.py > bandit_report.txt
-   python -m flake8 attendance_tracker.py > flake8_report.txt
-   ```
-   Use the `python -m` form: it works everywhere, including Windows where a bare `pylint` is often "not recognized". The tools exit with a non-zero status whenever they find issues; that is expected, not an error. In Windows PowerShell 5.1, `>` saves files as UTF-16; if a report looks garbled, use `python -m pylint attendance_tracker.py | Out-File -Encoding utf8 pylint_report.txt` instead.
+```bash
+python -m pip install requests pylint bandit flake8
+```
 
-4. **Document the issues** in `issues.md` using this table (at least 4 rows, high and medium severity first):
+Run the attendance tracker:
 
-   | Issue | Type | Line(s) | Description | Fix Approach |
-   |-------|------|---------|-------------|--------------|
-   | ... | ... | ... | ... | ... |
+```bash
+python attendance_tracker.py
+```
 
-5. **Fix the code.** Fix at least 4 of the issues you documented, then rerun all three tools to confirm they are gone. Repeat until you are satisfied. The program should still do its job when you are done.
+## Run Static Analysis
 
-6. **Reflect.** Answer the four reflection questions from the handout in `reflection.md`.
+Generate the Pylint report:
 
-## Deliverables
+```bash
+python -m pylint attendance_tracker.py > pylint_after.txt
+```
 
-1. `attendance_tracker.py`: your cleaned version, with at least 4 issues fixed.
-2. `issues.md`: the completed issue table.
-3. `reflection.md`: your answers to the reflection questions.
+Generate the Bandit report:
 
-**Target:** aim for a Pylint score above 9.5 on your final file. A perfect 10.00/10 is very good.
+```bash
+python -m bandit -r attendance_tracker.py > bandit_after.txt
+```
 
-Be ready to explain the bugs you found and how you fixed them. You may be called on to present.
+Generate the Flake8 report:
+
+```bash
+python -m flake8 attendance_tracker.py > flake8_after.txt
+```
+
+Note: Flake8 may produce an empty report when no issues are found.
+
+## Analysis Results
+
+- **Pylint:** 10.00/10
+- **Bandit:** No issues identified
+- **Flake8:** No errors reported
+
+## Key Improvements
+
+- Enabled default HTTPS certificate verification.
+- Added a timeout to HTTP requests.
+- Read the ERP API key from an environment variable.
+- Replaced shell-based report backup operations with Python's `tarfile` module.
+- Improved CSV handling to mitigate spreadsheet formula injection.
+- Fixed the mutable default argument.
+- Added handling for students with no attendance records.
+- Improved dictionary iteration and removed an unused function argument.
+
+## Submission Deliverables
+
+1. `issues.md` — Issues table documenting identified problems and fixes.
+2. Before-and-after static analysis reports generated by Pylint, Bandit, and Flake8.
+3. `README.md` — Project documentation containing the forked repository URL.
+4. `attendance_tracker.py` — Updated source code.
+5. `reflection.md` — Lab reflection.
+
+## Repository
+
+https://github.com/HemanthCS2026/L5_61_attendance-tracker
